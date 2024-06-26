@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/samuel/Documents/UnixDevelopment1/build",
+  "command": "/usr/bin/cc -I/home/samuel/Documents/UnixDevelopment1/src/cJson -g -o CMakeFiles/Main.dir/src/Main.c.o -c /home/samuel/Documents/UnixDevelopment1/src/Main.c",
+  "file": "/home/samuel/Documents/UnixDevelopment1/src/Main.c",
+  "output": "CMakeFiles/Main.dir/src/Main.c.o"
+}
+]
