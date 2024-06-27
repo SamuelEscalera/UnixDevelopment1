@@ -8,6 +8,8 @@
 
 #define MAX_CONNECTIONS 30
 
+void sigint_handler(int sig);
+
 int server_socket;
 
 int main(int argc, char *argv[]) {
@@ -22,6 +24,7 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in server_addr, client_addr;
     socklen_t client_addr_len = sizeof(client_addr);
 
+    signal(SIGINT, sigint_handler);
 
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server_socket < 0) {
@@ -46,4 +49,10 @@ int main(int argc, char *argv[]) {
     }
 
     printf("Server listening on port %d\n", port);
+}
+
+void sigint_handler(int sig) {
+    printf("Caught signal %d, terminating server...\n", sig);
+    close(server_socket);
+    exit(EXIT_SUCCESS);
 }
