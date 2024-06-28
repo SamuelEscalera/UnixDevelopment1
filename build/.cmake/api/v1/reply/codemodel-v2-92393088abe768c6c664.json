@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "WEB SERVER",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -38,8 +40,15 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "Client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Client-Debug-575dae4a5dded77066a8.json",
+					"name" : "Client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "Main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Main-Debug-699b1e0e54b9c057a68e.json",
+					"jsonFile" : "target-Main-Debug-a3921d22aaa28d19903e.json",
 					"name" : "Main",
 					"projectIndex" : 0
 				}

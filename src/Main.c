@@ -8,6 +8,8 @@
 
 #define MAX_CONNECTIONS 30
 
+void handle_client(int client_socket);
+void* client_thread(void* arg);
 void sigint_handler(int sig);
 
 int server_socket;
@@ -49,7 +51,77 @@ int main(int argc, char *argv[]) {
     }
 
     printf("Server listening on port %d\n", port);
+
+    while (1) {
+        int client_socket = accept(server_socket, (struct sockaddr*)&client_addr, &client_addr_len);
+        if (client_socket < 0){
+            perror("Accept failed");
+            continue;
+        }
+
+        pthread_t thread_id;
+        if(pthread_create(&thread_id, NULL, client_thread, (void*)&client_socket) != 0){
+            perror("Thread creation failed");
+            close(client_socket);
+        }
+    }
+    
+    close(server_socket);
+
+    return 0;
 }
+
+void* client_thread(void* arg) {
+    int client_socket = *((int*)arg);
+    handle_client(client_socket);
+    close(client_socket);
+    pthread_exit(NULL);
+}
+
+void handle_client(int client_socket){
+    char buffer[1024];
+    int bytes_read;
+
+    while((bytes_read = read(client_socket, buffer, sizeof(buffer) -1)) > 0) {
+        buffer[bytes_read] = '\0';
+        if(strcmp(buffer, "getInfo") == 0){
+            write(client_socket, "Sam service, v1.0\n", 19);
+        } else if(strcmp(buffer, "getNumberOfPartitions") == 0){
+            FILE *fp = popen("lsblk -l | grep part | wc -l", "r");
+            if ( fp == NULL){
+                write(client_socket, "Error\n", 6);
+                continue;
+            }
+            fgets(buffer, sizeof(buffer), fp);
+            pclose(fp);
+            write(client_socket, buffer, strlen(buffer));
+        } else if (strcmp(buffer, "getCurrentKernelVersion") == 0){
+            FILE *fp = popen("uname -r", "r");
+            if (fp == NULL){
+                write(client_socket, "Error\n", 6);
+                continue;
+            }
+            fgets(buffer, sizeof(buffer), fp);
+            pclose(fp);
+            write(client_socket, buffer, strlen(buffer));
+        } else if (strcmp(buffer, "sshdRunning") == 0){
+            FILE *fp = popen("ps ax | grep sshd | grep -v grep", "r");
+            if (fp == NULL) {
+                write(client_socket, "false\n", 6);
+                continue;
+            }
+            if (fgets(buffer, sizeof(buffer), fp) != NULL) {
+                write(client_socket, "true\n", 5);
+            } else {
+                write(client_socket, "false\n", 6);
+            }
+            pclose(fp);
+        } else {
+            write(client_socket, "Invalid command\n", 17);
+        }
+    }
+}
+
 
 void sigint_handler(int sig) {
     printf("Caught signal %d, terminating server...\n", sig);

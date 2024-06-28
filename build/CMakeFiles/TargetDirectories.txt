@@ -1,3 +1,4 @@
 /home/samuel/Documents/UnixDevelopment1/build/CMakeFiles/Main.dir
+/home/samuel/Documents/UnixDevelopment1/build/CMakeFiles/Client.dir
 /home/samuel/Documents/UnixDevelopment1/build/CMakeFiles/edit_cache.dir
 /home/samuel/Documents/UnixDevelopment1/build/CMakeFiles/rebuild_cache.dir

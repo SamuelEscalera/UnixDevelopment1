@@ -52,7 +52,6 @@ build cmake_object_order_depends_target_Main: phony || CMakeFiles/Main.dir
 build CMakeFiles/Main.dir/src/Main.c.o: C_COMPILER__Main_unscanned_Debug /home/samuel/Documents/UnixDevelopment1/src/Main.c || cmake_object_order_depends_target_Main
   DEP_FILE = CMakeFiles/Main.dir/src/Main.c.o.d
   FLAGS = -g
-  INCLUDES = -I/home/samuel/Documents/UnixDevelopment1/src/cJson
   OBJECT_DIR = CMakeFiles/Main.dir
   OBJECT_FILE_DIR = CMakeFiles/Main.dir/src
 
@@ -71,6 +70,37 @@ build Main: C_EXECUTABLE_LINKER__Main_Debug CMakeFiles/Main.dir/src/Main.c.o
   PRE_LINK = :
   TARGET_FILE = Main
   TARGET_PDB = Main.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target Client
+
+
+#############################################
+# Order-only phony target for Client
+
+build cmake_object_order_depends_target_Client: phony || CMakeFiles/Client.dir
+
+build CMakeFiles/Client.dir/src/Client.c.o: C_COMPILER__Client_unscanned_Debug /home/samuel/Documents/UnixDevelopment1/src/Client.c || cmake_object_order_depends_target_Client
+  DEP_FILE = CMakeFiles/Client.dir/src/Client.c.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/Client.dir
+  OBJECT_FILE_DIR = CMakeFiles/Client.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Client
+
+
+#############################################
+# Link the executable Client
+
+build Client: C_EXECUTABLE_LINKER__Client_Debug CMakeFiles/Client.dir/src/Client.c.o
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/Client.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Client
+  TARGET_PDB = Client.dbg
 
 
 #############################################
@@ -106,7 +136,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/samuel/Documents/UnixDevelopment1/build
 
-build all: phony Main
+build all: phony Main Client
 
 # =============================================================================
 # Built-in targets

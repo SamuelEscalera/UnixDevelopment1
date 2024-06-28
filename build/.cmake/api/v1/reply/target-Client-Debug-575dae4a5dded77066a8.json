@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Main"
+			"path" : "Client"
 		}
 	],
 	"backtrace" : 1,
@@ -10,8 +10,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"include_directories"
+			"add_executable"
 		],
 		"files" : 
 		[
@@ -27,12 +26,6 @@
 				"file" : 0,
 				"line" : 6,
 				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 4,
-				"parent" : 0
 			}
 		]
 	},
@@ -45,13 +38,6 @@
 					"fragment" : "-g"
 				}
 			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 2,
-					"path" : "/home/samuel/Documents/UnixDevelopment1/src/cJson"
-				}
-			],
 			"language" : "C",
 			"sourceIndexes" : 
 			[
@@ -59,7 +45,7 @@
 			]
 		}
 	],
-	"id" : "Main::@6890427a1f51a3e7e1df",
+	"id" : "Client::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -75,8 +61,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "Main",
-	"nameOnDisk" : "Main",
+	"name" : "Client",
+	"nameOnDisk" : "Client",
 	"paths" : 
 	{
 		"build" : ".",
@@ -97,7 +83,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/Main.c",
+			"path" : "src/Client.c",
 			"sourceGroupIndex" : 0
 		}
 	],
